@@ -418,7 +418,7 @@ process_bootstrap <- function(i, samp_name, kal_path,
       rm(bs_tpm)
       # Make long tidy table; this step is much faster
       # using data.table melt rather than tidyr gather ## NOTE - data.table melt is now broken
-      tidy_tpm <- reshape2::melt(as.data.table(bs_tpm_df), id.vars = "bootstrap_num",
+      tidy_tpm <- data.table::melt(as.data.table(bs_tpm_df), id.vars = "bootstrap_num",
                                    variable.name = "target_id",
                                    value.name = "tpm")
       rm(bs_tpm_df)
@@ -457,7 +457,7 @@ process_bootstrap <- function(i, samp_name, kal_path,
     rm(bs_mat)
     # data.table melt function is much faster than tidyr's gather function ## NOTE - data.table melt is now broken
     # output is a long table with each bootstrap's value for each target_id
-    tidy_bs <- reshape2::melt(data.table::as.data.table(bs_df), id.vars = "bootstrap_num",
+    tidy_bs <- data.table::melt(data.table::as.data.table(bs_df), id.vars = "bootstrap_num",
                                 variable.name = "target_id",
                                 value.name = "est_counts")
     rm(bs_df)
