@@ -530,7 +530,7 @@ sleuth_prep <- function(
       agg_id <- unique(target_mapping[, aggregation_column, with = FALSE])
       agg_id <- agg_id[[1]]
       agg_id <- agg_id[!is.na(agg_id)]
-      mappings <- dplyr::select_(target_mapping, "target_id", aggregation_column)
+      mappings <- dplyr::select(target_mapping, "target_id", aggregation_column)
       mappings <- data.table::as.data.table(mappings)
       which_tms <- which(mappings$target_id %in% which_target_id)
       which_agg_id <- unique(mappings[which_tms, aggregation_column, with = FALSE])
